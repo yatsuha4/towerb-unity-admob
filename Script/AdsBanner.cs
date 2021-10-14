@@ -83,15 +83,19 @@ namespace Towerb.Admob
       }
       if(state == States.Loaded)
       {
-        var canvas = GetComponentInParent<Canvas>();
-        var height = 
-          Mathf.CeilToInt(bannerView.GetHeightInPixels() / canvas.scaleFactor);
-        Debug.Log($"AdsBanner height = {height}");
-        var layoutElement = GetComponent<LayoutElement>();
-        if(height > layoutElement.preferredHeight)
+#if !UNITY_EDITOR
+        if(GetComponentInParent<Canvas>() is Canvas canvas &&
+           GetComponent<LayoutElement>() is LayoutElement layoutElement)
         {
-          layoutElement.preferredHeight = height;
+          var height = 
+            Mathf.CeilToInt(bannerView.GetHeightInPixels() / canvas.scaleFactor);
+          Debug.Log($"AdsBanner height = {height}");
+          if(height > layoutElement.preferredHeight)
+          {
+            layoutElement.preferredHeight = height;
+          }
         }
+#endif
       }
     }
 
