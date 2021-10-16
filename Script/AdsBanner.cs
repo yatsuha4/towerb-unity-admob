@@ -68,6 +68,10 @@ namespace Towerb.Admob
     {
       if(bannerView == null)
       {
+        while(!AdsManager.Instance.IsInitialized)
+        {
+          yield return null;
+        }
         var size = 
           AdSize.GetCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(AdSize.FullWidth);
         bannerView = new BannerView(this.UnitId, size, this.position);
@@ -103,6 +107,7 @@ namespace Towerb.Admob
      */
     private void OnAdLoaded(object sender, EventArgs args)
     {
+      Debug.Log("AdsBanner.OnAdLoaded");
       state = States.Loaded;
     }
 
@@ -110,6 +115,7 @@ namespace Towerb.Admob
      */
     private void OnAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
     {
+      Debug.Log("AdsBanner.OnAdFailedToLoad");
       bannerView = null;
       state = States.Failed;
     }
