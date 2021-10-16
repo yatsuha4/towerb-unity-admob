@@ -25,24 +25,7 @@ namespace Towerb.Admob
     private bool show = true;
 
     [SerializeField]
-    private string unitId_android;
-
-    [SerializeField]
-    private string unitId_ios;
-
-    private string UnitId
-    {
-      get
-      {
-#if UNITY_ANDROID
-        return this.unitId_android;
-#elif UNITY_IOS
-        return this.unitId_ios;
-#else
-        return "";
-#endif
-      }
-    }
+    private AdsUnit unit;
 
     private static BannerView bannerView;
     private static States state;
@@ -74,7 +57,7 @@ namespace Towerb.Admob
         }
         var size = 
           AdSize.GetCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(AdSize.FullWidth);
-        bannerView = new BannerView(this.UnitId, size, this.position);
+        bannerView = new BannerView(this.unit.Id, size, this.position);
         bannerView.OnAdLoaded += this.OnAdLoaded;
         bannerView.OnAdFailedToLoad += this.OnAdFailedToLoad;
         state = States.Loading;
