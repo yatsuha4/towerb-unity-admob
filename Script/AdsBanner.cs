@@ -4,7 +4,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Towerb.Admob
+namespace towerb.admob
 {
     /**
      * <summary>バナー広告</summary>

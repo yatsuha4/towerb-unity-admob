@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Towerb.Admob
+namespace towerb.admob
 {
     [Serializable]
     public class AdsUnit

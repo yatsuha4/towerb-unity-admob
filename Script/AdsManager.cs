@@ -2,7 +2,7 @@ using GoogleMobileAds.Api;
 using System.Collections;
 using UnityEngine;
 
-namespace Towerb.Admob
+namespace towerb.admob
 {
     /**
        <summary>広告マネージャ</summary>
